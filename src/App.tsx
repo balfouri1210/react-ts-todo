@@ -1,24 +1,19 @@
 import React from 'react';
+import CardContainer from './components/card-container';
+import Card from './components/card/index';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <img src={logo} alt="logo" className="App-logo"/>
+
+      <CardContainer>
+        <Card title="100 battleground kill"></Card>
+        <Card title="exercise - 100 pushups"></Card>
+        <Card title="exercise - 100 situp!"></Card>
+      </CardContainer>
     </div>
   );
 }
