@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 interface CardProps {
   id: number,
   title: string,
-  deleteTodo: (todoId: number) => {}
+  deleteTodo: (todoId: number) => void
 }
 
 // TS에서 React.Component는 제네릭 타입이기 때문에

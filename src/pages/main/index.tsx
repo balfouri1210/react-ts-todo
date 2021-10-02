@@ -18,8 +18,6 @@ function Main() {
 
       <TodoContext.Consumer>
         {({ todos, actions }) => {
-          console.log('rerender?');
-          
           return (
             <CardContainer maxWidth={640}>
               {todos.map(todo => {
