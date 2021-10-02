@@ -1,0 +1,18 @@
+.card {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background: white;
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 32px;
+    text-decoration: none;
+  }
+}
+
+.card:hover {
+  background: rgba(#61dafb, 0.1);
+  border: 1px solid #61dafb;
+}

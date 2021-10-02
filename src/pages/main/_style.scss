@@ -1,0 +1,50 @@
+.index {
+  text-align: center;
+}
+
+.index-container {
+  padding-top: 16px;
+}
+
+.index-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  h2 {
+    font-size: 18px;
+  }
+}
+
+.index-logo {
+  height: 5vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .index-logo {
+    animation: index-logo-spin infinite 20s linear;
+  }
+}
+
+.index-link {
+  color: #61dafb;
+}
+
+@keyframes index-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+@media screen and (min-width: 865px) {
+  .index-header {
+    h2 {
+      font-size: 22px;
+    }
+  }
+}
