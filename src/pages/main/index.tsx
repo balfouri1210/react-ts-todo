@@ -19,7 +19,7 @@ function Main() {
       <MainHeader></MainHeader>
 
       <CardContainer maxWidth={640}>
-        {todoContext.todos.map(todo => {
+        {todoContext.todos.slice(0).reverse().map(todo => {
           return <CardItem id={todo.id} title={todo.content} deleteTodo={todoContext.actions.deleteTodo} key={todo.id}></CardItem>
         })}
       </CardContainer>

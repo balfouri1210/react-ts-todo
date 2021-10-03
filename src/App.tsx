@@ -4,9 +4,9 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
-import New from './pages/new';
-import TodoStore from 'context/todo-context';
 import Main from './pages/main';
+import Counter from './pages/counter';
+import TodoStore from 'context/todo-context';
 
 // Code splitting을 위한 lazy loading
 const Card = lazy(() => import('./pages/card/index'));
@@ -21,8 +21,8 @@ function App () {
               <Main />
             </Route>
 
-            <Route path="/new">
-              <New />
+            <Route path="/counter">
+              <Counter />
             </Route>
 
             <Route path="/card/:title">
