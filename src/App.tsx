@@ -6,9 +6,9 @@ import {
 } from 'react-router-dom';
 import New from './pages/new';
 import TodoStore from 'context/todo-context';
+import Main from './pages/main';
 
 // Code splitting을 위한 lazy loading
-const Main = lazy(() => import('./pages/main'));
 const Card = lazy(() => import('./pages/card/index'));
 
 function App () {

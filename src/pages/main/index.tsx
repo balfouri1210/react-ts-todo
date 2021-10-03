@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import MainHeader from 'components/main-header';
 import CardContainer from 'components/card-container';
 import CardItem from 'components/card-item/index';
@@ -7,6 +7,8 @@ import './_style.scss';
 import { TodoContext } from 'context/todo-context';
 
 function Main() {
+  const todoContext = useContext(TodoContext);
+
   return (
     <div className="index-container">
       <div className="index-header">
@@ -16,17 +18,11 @@ function Main() {
 
       <MainHeader></MainHeader>
 
-      <TodoContext.Consumer>
-        {({ todos, actions }) => {
-          return (
-            <CardContainer maxWidth={640}>
-              {todos.map(todo => {
-                return <CardItem id={todo.id} title={todo.content} deleteTodo={actions} key={todo.id}></CardItem>
-              })}
-            </CardContainer>
-          )
-        }}
-      </TodoContext.Consumer>
+      <CardContainer maxWidth={640}>
+        {todoContext.todos.map(todo => {
+          return <CardItem id={todo.id} title={todo.content} deleteTodo={todoContext.actions} key={todo.id}></CardItem>
+        })}
+      </CardContainer>
     </div>
   );
 }
