@@ -1,9 +1,14 @@
-✅ 프로젝트생성 : create-react-app
-✅ Typescript 기본개념 숙지 및 모든 컴포넌트를 TS로 작성
-✅ class component & functional component 차이 및 구현 연습
-✅ FC에 기본 hook 활용 (useState, useEffect, useReducer)
-✅ todo-list를 context api로 전역관리 (provider, consumer)
-🚀 다음 목표 : redux 혹은 mobx 를 활용한 상태관리
+✅  프로젝트생성 : create-react-app
+
+✅  Typescript 기본개념 숙지 및 모든 컴포넌트를 TS로 작성
+
+✅  class component & functional component 차이 및 구현 연습
+
+✅  FC에 기본 hook 활용 (useState, useEffect, useReducer)
+
+✅  todo-list를 context api로 전역관리 (provider, consumer)
+
+🚀  다음 목표 : redux 혹은 mobx 를 활용한 상태관리
 
 
 # Getting Started with Create React App
