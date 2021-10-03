@@ -3,9 +3,13 @@ import './_style.scss';
 import { Link } from 'react-router-dom';
 
 interface CardProps {
-  id: number,
-  title: string,
-  deleteTodo: (todoId: number) => void
+  todo: {
+    id: number;
+    content: string;
+    done: boolean;
+  };
+  deleteTodo: (todoId: number) => void;
+  updateTodo: (todoId: number) => void;
 }
 
 // TS에서 React.Component는 제네릭 타입이기 때문에
@@ -20,7 +24,12 @@ class Card extends React.Component<CardProps> {
 
   deleteTodo = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
-    this.props.deleteTodo(this.props.id)
+    this.props.deleteTodo(this.props.todo.id)
+  }
+
+  updateTodo = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    this.props.updateTodo(this.props.todo.id)
   }
 
   render() {
@@ -28,10 +37,13 @@ class Card extends React.Component<CardProps> {
       // 컴포넌트를 만들때 root element를 위해 div로 엮게되는데
       // 이러면 HTML semantic tag 룰을 깨트리게된다.
       // 이때는 React Fragment로 감싸주면 해결된다.
-      <div className="card">
-        <Link to={`/card/${this.props.title}`}>
-          <span>{this.props.title}</span>
-          <button onClick={this.deleteTodo}>Delete</button>
+      <div className={`card ${this.props.todo.done ? 'card--done' : null}`}>
+        <Link to={`/card/${this.props.todo.content}`}>
+          <span>{this.props.todo.content}</span>
+          <div>
+            <button onClick={this.updateTodo} style={{ marginRight: '8px' }}>✅ Done</button>
+            <button onClick={this.deleteTodo}>🗑 Delete</button>
+          </div>
         </Link>
       </div>
     )

@@ -21,7 +21,11 @@ function Main() {
 
       <CardContainer>
         {todoContext.todos.slice(0).reverse().map(todo => {
-          return <CardItem id={todo.id} title={todo.content} deleteTodo={todoContext.actions.deleteTodo} key={todo.id}></CardItem>
+          return <CardItem
+            todo={todo}
+            deleteTodo={todoContext.actions.deleteTodo}
+            updateTodo={todoContext.actions.updateTodo}
+            key={todo.id} />
         })}
       </CardContainer>
 
