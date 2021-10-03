@@ -20,7 +20,7 @@ function Main() {
 
       <CardContainer maxWidth={640}>
         {todoContext.todos.map(todo => {
-          return <CardItem id={todo.id} title={todo.content} deleteTodo={todoContext.actions} key={todo.id}></CardItem>
+          return <CardItem id={todo.id} title={todo.content} deleteTodo={todoContext.actions.deleteTodo} key={todo.id}></CardItem>
         })}
       </CardContainer>
     </div>

@@ -1,38 +1,44 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useContext } from 'react';
 import { TodoContext } from 'context/todo-context';
+import './_style.scss';
 
 function MainHeader() {
-  const headerStyle = {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    maxWidth: '640px',
-    margin: '16px auto 0',
-    padding: '0 16px',
-    textAlign: 'right' as const
+  const [newTodo, setNewTodo] = useState('');
+  const [addTodoForm, setAddTodoForm] = useState(false);
+
+  const todoContext = useContext(TodoContext);
+
+  function showAddTodoForm() {
+    setAddTodoForm(!addTodoForm);
   }
 
-  const linkStyle = {
-    padding: '4px 16px',
-    background: '#61dafb',
-    color: 'white',
-    fontWeight: 600,
-    borderRadius: '6px',
-    textDecoration: 'none',
+  function changeContent(event: React.ChangeEvent<HTMLInputElement>) {
+    setNewTodo(event.target.value);
+  }
+
+  function handleSubmit(event: React.FormEvent) {
+    event.preventDefault();
+    todoContext.actions.addTodo(newTodo);
+    setNewTodo('');
+    setAddTodoForm(false);
   }
 
   return (
-    <TodoContext.Consumer>
-      {value => {
-        return (
-          <header style={headerStyle}>
-            <span>Total: {value.todos.length}</span>
-            <Link to={'/new'} style={linkStyle}>Add Todo</Link>
-          </header>
-        )
-      }}
-    </TodoContext.Consumer>
+    <header className="header">
+      <div>
+        <span>Total: {todoContext.todos.length}</span>
+        <button onClick={showAddTodoForm} className="header__add-todo">
+          {addTodoForm ? 'Cancel' : 'Add Todo'}
+        </button>
+      </div>
+
+      {addTodoForm ?
+        <form onSubmit={handleSubmit} className="header__new-todo-form">
+          <input type="text" value={newTodo} onChange={changeContent}/>
+          <button type="submit">Submit!</button>
+        </form> : null
+      }
+    </header>
   )
 }
 

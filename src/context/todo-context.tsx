@@ -10,12 +10,18 @@ interface TodoContextValue {
     content: string;
   }[],
 
-  actions: (todoId: number) => void
+  actions: {
+    addTodo: (content: string) => void,
+    deleteTodo: (todoId: number) => void
+  }
 }
 
 export const TodoContext = React.createContext<TodoContextValue>({
   todos: [],
-  actions: () => {}
+  actions: {
+    addTodo: () => {},
+    deleteTodo: () => {}
+  }
 });
 
 function TodoStore(props: TodoContextProps) {
@@ -32,6 +38,16 @@ function TodoStore(props: TodoContextProps) {
     }
   ]);
 
+  function addTodo (content: string) {
+    setTodos([
+      ...todos,
+      {
+        id: todos[todos.length - 1].id + 1,
+        content
+      }
+    ])
+  }
+
   function deleteTodo (todoId: number) {
     // todos를 array에 복사해서 따로 할당하는 이유는,
     // setState에서 새로운 값을 할당하는게 아니라 기존값을 변경하는 경우 context에서 변화를 감지하지 못해
@@ -46,7 +62,7 @@ function TodoStore(props: TodoContextProps) {
   }
 
   return (
-    <TodoContext.Provider value={{ todos, actions: deleteTodo }}>
+    <TodoContext.Provider value={{ todos, actions: { addTodo, deleteTodo } }}>
       {props.children}
     </TodoContext.Provider>
   )
