@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import MainHeader from 'components/main-header';
 import CardContainer from 'components/card-container';
 import CardItem from 'components/card-item/index';
@@ -18,11 +19,15 @@ function Main() {
 
       <MainHeader></MainHeader>
 
-      <CardContainer maxWidth={640}>
+      <CardContainer>
         {todoContext.todos.slice(0).reverse().map(todo => {
           return <CardItem id={todo.id} title={todo.content} deleteTodo={todoContext.actions.deleteTodo} key={todo.id}></CardItem>
         })}
       </CardContainer>
+
+      <div style={{ textAlign: 'right' }}>
+        <Link to="/counter">Go to Counter (useReducer test)</Link>
+      </div>
     </div>
   );
 }
